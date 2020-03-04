@@ -1,4 +1,4 @@
-# Code Snippets to ease your time developing smth useful (for a change)
-# To add those snippets to your Xcode, copy-paste the files in this directory (excluding the README.md, du-uh) into `~/Library/Developer/Xcode/UserData/CodeSnippets`
+# Xcode templates to ease your time developing smth useful (for a change)
+# To add those templates to your Xcode, copy-paste needed files into `~/Library/Developer/Xcode/Templates`
 
 # Enjoy your coding!
