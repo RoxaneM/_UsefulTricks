@@ -69,8 +69,34 @@ public extension Array {
 
         return result
     }
-    
-    func first(_ count: Int) -> [Element] {
-        return (self.count <= count) ? self : Array(self[..<count])
+
+    /// Convenient method to take first `n` elements from the array.
+    ///
+    /// - Parameters:
+    ///   - n: the number of elements to be returned starting from index 0.
+    /// - Returns:
+    ///   - new array with elements in range [0; n] or copy of self if there are less than `n` elements in original array
+    func first(_ n: Int) -> [Element] {
+        return (self.count <= n) ? self : Array(self[..<n])
+    }
+
+    /// A modification of Swift's `map` function to include the elements in the result array only if the `transform` resulted in some value and not nil.
+    /// Thus, the result array can have same count or less elements (down to zero) than the original array.
+    ///
+    /// - Parameters:
+    ///   - transform: A mapping closure. `transform` accepts an element of original array as its parameter and returns a transformed
+    ///   value of the type of element in resulted array..
+    /// - Returns:
+    ///   - new array containing transformed elements.
+    func mapOptional<T>(_ transform: (Element) -> T?) -> [T] {
+        var resultArray = [T]()
+
+        for originalElement in self {
+            if let newElement = transform(originalElement) {
+                resultArray.append(newElement)
+            }
+        }
+
+        return resultArray
     }
 }
