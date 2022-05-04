@@ -69,6 +69,28 @@ public extension Array {
 
         return result
     }
+    
+    /// Excludes the items listed in parameters from array.
+    ///
+    /// - Parameters:
+    ///   - itemsToExclude: list of items to exclude from array.
+    /// - Returns:
+    ///   - new array containing items from current array, excluding items listed in parameters.
+    ///
+    ///   Corner cases expected behaviour:
+    /// - If any item in `itemsToExclude` is not found, nothing happens.
+    /// - If none of the items in `itemsToExclude` are found, identical new array will be returned.
+    /// - If `itemsToExclude` include all items that are present in array, an empty array will be returned.
+    ///
+    func excluding(_ itemsToExclude: Element...) -> [Element] {
+        var result = [Element]()
+        
+        for element in self where !itemsToExclude.contains(element) {
+            result.append(element)
+        }
+        
+        return result
+    }
 
     /// Convenient method to take first `n` elements from the array.
     ///
